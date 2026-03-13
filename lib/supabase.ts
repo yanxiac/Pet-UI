@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import type { PetCategory } from '@/types/pet'
+import { CATEGORY_THEME_GRADIENTS } from '@/lib/mock-data'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -59,6 +60,7 @@ export function mapToPetCategory(row: PetCategoryItem): PetCategory {
     imageUrl: row.image_url ?? '',
     slug: row.category?.toLowerCase().replace(/\s+/g, '-') ?? row.id,
     count: 0,
+    themeGradient: CATEGORY_THEME_GRADIENTS[row.name],
   }
 }
 

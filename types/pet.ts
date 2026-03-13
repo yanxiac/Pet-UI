@@ -10,11 +10,15 @@ export interface PetCategory {
   slug: string
   /** 品种数量 */
   count?: number
+  /** 品种主题渐变色，用于首页背景；格式为 CSS linear-gradient 字符串 */
+  themeGradient?: string
 }
 
 /** PetEncyclopediaHome 组件 Props */
 export interface PetEncyclopediaHomeProps {
-  /** 当前 Hero 区展示的精选类别；未传则使用默认 Mock 数据 */
+  /** 全部宠物大类列表，用于左右滑动切换；优先级高于 featuredCategory */
+  categories?: PetCategory[]
+  /** 兼容旧接口：单个精选类别；categories 未传时使用 */
   featuredCategory?: PetCategory
   /** 用户头像 URL；未传则显示默认占位图标 */
   userAvatarUrl?: string
