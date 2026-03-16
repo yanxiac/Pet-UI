@@ -76,12 +76,15 @@ export default function PetEncyclopediaHome({
   const dragStartYRef = useRef<number | null>(null)
   // 是否已锁定为水平滑动（锁定后才阻止纵向滚动）
   const isHorizontalLockRef = useRef<boolean | null>(null)
+  // 是否发生了有效拖拽（区分 tap 与 drag，超过 8px 视为拖拽）
+  const hasDraggedRef = useRef(false)
   const rootRef = useRef<HTMLDivElement>(null)
 
   const startDrag = (x: number, y: number) => {
     dragStartXRef.current = x
     dragStartYRef.current = y
     isHorizontalLockRef.current = null
+    hasDraggedRef.current = false
     setIsDragging(true)
   }
 
@@ -89,6 +92,11 @@ export default function PetEncyclopediaHome({
     if (dragStartXRef.current === null || dragStartYRef.current === null) return
     const dx = x - dragStartXRef.current
     const dy = y - dragStartYRef.current
+
+    // 超过 8px 时标记为有效拖拽，后续不触发点击跳转
+    if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+      hasDraggedRef.current = true
+    }
 
     // 首次移动时判断方向并锁定
     if (isHorizontalLockRef.current === null) {
@@ -270,6 +278,12 @@ export default function PetEncyclopediaHome({
                 key={cat.id}
                 className="flex-shrink-0 w-full h-full flex items-center justify-center"
                 aria-hidden={idx !== currentIndex}
+                onClick={() => {
+                  // 仅当没有发生拖拽（即纯点击/tap）且是当前展示项时跳转
+                  if (!hasDraggedRef.current && idx === currentIndex) {
+                    router.push(`/guide/${cat.slug}`)
+                  }
+                }}
               >
                 <Image
                   src={cat.imageUrl}

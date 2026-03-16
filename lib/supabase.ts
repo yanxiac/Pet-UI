@@ -32,19 +32,25 @@ export type PetCategoryItem = {
 
 /**
  * 获取 pet_category 表中所有记录（按创建时间倒序）
+ * 网络不通或 Supabase 不可用时静默返回 []，由调用方降级为 mock 数据
  */
 export async function fetchPetCategoryItems(): Promise<PetCategoryItem[]> {
-  const { data, error } = await supabase
-    .from('pet_category')
-    .select('*')
-    .order('created_at', { ascending: false })
+  try {
+    const { data, error } = await supabase
+      .from('pet_category')
+      .select('*')
+      .order('created_at', { ascending: false })
 
-  if (error) {
-    console.error('[Supabase] fetchPetCategoryItems error:', error.message)
+    if (error) {
+      console.warn('[Supabase] fetchPetCategoryItems:', error.message)
+      return []
+    }
+
+    return data ?? []
+  } catch (e) {
+    console.warn('[Supabase] fetchPetCategoryItems: unreachable, using mock data')
     return []
   }
-
-  return data ?? []
 }
 
 // ─── 数据映射 ─────────────────────────────────────────────────────────────────

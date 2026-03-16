@@ -9,7 +9,7 @@ import { fetchPetCategoryItems, mapToPetCategory } from '@/lib/supabase'
  * 数据优先级：Supabase pet_category 全量数据 → Mock 数据兜底
  */
 export default async function HomePage() {
-  const items = await fetchPetCategoryItems()
+  const items = await fetchPetCategoryItems().catch(() => [])
   const categories =
     items.length > 0 ? items.map(mapToPetCategory) : mockPetCategories
 
