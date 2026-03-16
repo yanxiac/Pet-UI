@@ -110,6 +110,11 @@ export default function PetGuideHome({
         {GUIDE_CARDS.map((card) => (
           <div
             key={card.id}
+            onClick={() => {
+              if (card.id === 'raising') {
+                router.push(`/guide/${category.slug}/raising`)
+              }
+            }}
             className="flex w-full h-[100px] rounded-[44px] overflow-hidden cursor-pointer active:scale-[0.98] transition-transform duration-150"
             style={{
               background: card.cardBg,
