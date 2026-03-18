@@ -56,14 +56,14 @@ export const mockPetCategories: PetCategory[] = [
     themeGradient: CATEGORY_THEME_GRADIENTS['犬类'],
   },
   {
-    id: 'rabbit-001',
-    name: '兔类',
-    description: '温顺安静的小型宠物，毛茸茸惹人喜爱，\n适合居家安静环境饲养。',
+    id: 'reptile-001',
+    name: '爬行与冷血类',
+    description: '安静而充满观察乐趣的异宠伙伴，涵盖爬宠、两栖与冷血类家庭饲养方向。',
     imageUrl:
-      'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=800&q=85',
-    slug: 'rabbits',
-    count: 25,
-    themeGradient: CATEGORY_THEME_GRADIENTS['小型哺乳动物类'],
+      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/reptile.png',
+    slug: 'reptiles',
+    count: 18,
+    themeGradient: CATEGORY_THEME_GRADIENTS['爬行与冷血类'],
   },
   {
     id: 'bird-001',
@@ -86,6 +86,31 @@ export const mockPetCategories: PetCategory[] = [
     themeGradient: CATEGORY_THEME_GRADIENTS['水族与两栖类'],
   },
 ]
+
+/**
+ * 首页分类顺序微调：
+ * 仅交换指定两个分类的位置，其余分类保持原有相对顺序不变。
+ */
+export function swapPetCategoryOrder(
+  categories: PetCategory[],
+  firstName: string,
+  secondName: string
+): PetCategory[] {
+  const firstIndex = categories.findIndex((category) => category.name === firstName)
+  const secondIndex = categories.findIndex((category) => category.name === secondName)
+
+  if (firstIndex === -1 || secondIndex === -1 || firstIndex === secondIndex) {
+    return categories
+  }
+
+  const nextCategories = [...categories]
+  ;[nextCategories[firstIndex], nextCategories[secondIndex]] = [
+    nextCategories[secondIndex],
+    nextCategories[firstIndex],
+  ]
+
+  return nextCategories
+}
 
 /** 首页默认精选类别（猫类） */
 export const defaultFeaturedCategory = mockPetCategories[0]

@@ -47,7 +47,7 @@ export async function fetchPetCategoryItems(): Promise<PetCategoryItem[]> {
     }
 
     return data ?? []
-  } catch (e) {
+  } catch {
     console.warn('[Supabase] fetchPetCategoryItems: unreachable, using mock data')
     return []
   }
@@ -68,6 +68,153 @@ export function mapToPetCategory(row: PetCategoryItem): PetCategory {
     count: 0,
     themeGradient: CATEGORY_THEME_GRADIENTS[row.name],
   }
+}
+
+// ─── parenting_guide 表类型 ───────────────────────────────────────────────────
+
+export type ParentingGuideItem = {
+  id: string
+  name: string
+  description: string | null
+  category: string | null
+  image_url: string | null
+  created_at: string
+}
+
+/**
+ * 获取 parenting_guide 表中所有记录（按创建时间升序）
+ */
+export async function fetchParentingGuideItems(): Promise<ParentingGuideItem[]> {
+  try {
+    const { data, error } = await supabase
+      .from('parenting_guide')
+      .select('*')
+      .order('created_at', { ascending: true })
+
+    if (error) {
+      console.warn('[Supabase] fetchParentingGuideItems:', error.message)
+      return []
+    }
+
+    return data ?? []
+  } catch {
+    console.warn('[Supabase] fetchParentingGuideItems: unreachable')
+    return []
+  }
+}
+
+// ─── splash_grid_images 表类型 ────────────────────────────────────────────────
+
+export type SplashGridImageItem = {
+  id: string
+  title: string
+  image_url: string
+  display_order: number
+  created_at: string
+}
+
+/**
+ * 获取启动页图片网格数据（按 display_order 升序）
+ */
+export async function fetchSplashGridImages(): Promise<SplashGridImageItem[]> {
+  try {
+    const { data, error } = await supabase
+      .from('splash_grid_images')
+      .select('*')
+      .order('display_order', { ascending: true })
+
+    if (error) {
+      if (error.code === 'PGRST205') {
+        return []
+      }
+      console.warn('[Supabase] fetchSplashGridImages:', error.message)
+      return []
+    }
+
+    return data ?? []
+  } catch {
+    console.warn('[Supabase] fetchSplashGridImages: unreachable')
+    return []
+  }
+}
+
+const FALLBACK_SPLASH_GRID_IMAGES: SplashGridImageItem[] = [
+  {
+    id: 'splash-cat-1',
+    title: '猫类',
+    image_url:
+      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/cat.png',
+    display_order: 1,
+    created_at: '',
+  },
+  {
+    id: 'splash-dog-1',
+    title: '犬类',
+    image_url:
+      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/dog.png',
+    display_order: 2,
+    created_at: '',
+  },
+  {
+    id: 'splash-bird-1',
+    title: '鸟类',
+    image_url:
+      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/bird.png',
+    display_order: 3,
+    created_at: '',
+  },
+  {
+    id: 'splash-fish-1',
+    title: '水族与两栖类',
+    image_url:
+      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/fish.png',
+    display_order: 4,
+    created_at: '',
+  },
+  {
+    id: 'splash-reptile-1',
+    title: '爬行与冷血类',
+    image_url:
+      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/reptile.png',
+    display_order: 5,
+    created_at: '',
+  },
+  {
+    id: 'splash-cat-2',
+    title: '猫类',
+    image_url:
+      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/cat.png',
+    display_order: 6,
+    created_at: '',
+  },
+  {
+    id: 'splash-dog-2',
+    title: '犬类',
+    image_url:
+      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/dog.png',
+    display_order: 7,
+    created_at: '',
+  },
+  {
+    id: 'splash-bird-2',
+    title: '鸟类',
+    image_url:
+      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/bird.png',
+    display_order: 8,
+    created_at: '',
+  },
+  {
+    id: 'splash-fish-2',
+    title: '水族与两栖类',
+    image_url:
+      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/fish.png',
+    display_order: 9,
+    created_at: '',
+  },
+]
+
+export function getFallbackSplashGridImages(): SplashGridImageItem[] {
+  return FALLBACK_SPLASH_GRID_IMAGES
 }
 
 // ─── 辅助函数 ─────────────────────────────────────────────────────────────────

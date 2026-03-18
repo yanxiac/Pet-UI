@@ -9,7 +9,10 @@ import {
   User,
 } from 'lucide-react'
 import { PetEncyclopediaHomeProps } from '@/types/pet'
-import { defaultFeaturedCategory, mockPetCategories } from '@/lib/mock-data'
+import {
+  mockPetCategories,
+  swapPetCategoryOrder,
+} from '@/lib/mock-data'
 
 /** 当无 themeGradient 时的兜底渐变 */
 const DEFAULT_GRADIENT =
@@ -48,10 +51,10 @@ export default function PetEncyclopediaHome({
   // categories 解析：props 传入 > 单个 featuredCategory > Mock 全量数据
   const categories =
     categoriesProp && categoriesProp.length > 0
-      ? categoriesProp
+      ? swapPetCategoryOrder(categoriesProp, '猫类', '爬行与冷血类')
       : featuredCategory
       ? [featuredCategory]
-      : mockPetCategories
+      : swapPetCategoryOrder(mockPetCategories, '猫类', '爬行与冷血类')
 
   const total = categories.length
   const category = categories[currentIndex]
