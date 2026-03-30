@@ -11,23 +11,28 @@ interface SplashScreenProps {
 }
 
 const ROW_CONFIGS = [
-  { duration: 13.6, offset: -88, imageOpacity: 0.52, overlayOpacity: 0.48 },
-  { duration: 16.8, offset: -24, imageOpacity: 0.46, overlayOpacity: 0.54 },
-  { duration: 20.4, offset: -108, imageOpacity: 0.4, overlayOpacity: 0.62 },
-  { duration: 23.2, offset: -36, imageOpacity: 0.35, overlayOpacity: 0.7 },
+  { duration: 13.6, offset: -88, imageOpacity: 0.76, overlayOpacity: 0.18 },
+  { duration: 16.8, offset: -24, imageOpacity: 0.7, overlayOpacity: 0.24 },
+  { duration: 20.4, offset: -108, imageOpacity: 0.64, overlayOpacity: 0.3 },
+  { duration: 23.2, offset: -36, imageOpacity: 0.58, overlayOpacity: 0.36 },
 ]
 
-const TILE_POSITIONS = [
-  'center 28%',
-  'center 34%',
-  'center 22%',
-  'center 50%',
-  'center 40%',
-  'center 18%',
-  'center 46%',
-  'center 32%',
-  'center 24%',
-]
+const DEFAULT_TILE_VISUAL = {
+  objectPosition: 'center 36%',
+  scale: 1.14,
+}
+
+const TILE_VISUAL_TUNING: Record<number, { objectPosition: string; scale: number }> = {
+  1: { objectPosition: 'center 26%', scale: 1.16 },
+  2: { objectPosition: 'center 30%', scale: 1.12 },
+  3: { objectPosition: 'center 24%', scale: 1.16 },
+  4: { objectPosition: 'center 48%', scale: 1.1 },
+  5: { objectPosition: 'center 34%', scale: 1.15 },
+  6: { objectPosition: 'center 28%', scale: 1.14 },
+  7: { objectPosition: 'center 30%', scale: 1.14 },
+  8: { objectPosition: 'center 24%', scale: 1.16 },
+  9: { objectPosition: 'center 42%', scale: 1.12 },
+}
 
 function buildMarqueeRows(images: SplashGridImageItem[]) {
   const base = images.length > 0 ? images : []
@@ -41,12 +46,13 @@ function buildMarqueeRows(images: SplashGridImageItem[]) {
     key: `row-${rowIndex}`,
     tiles: Array.from({ length: 5 }, (_, tileIndex) => {
       const image = base[(rowIndex * 2 + tileIndex) % base.length]
-      const visualIndex = rowIndex * 5 + tileIndex
+      const tuning = TILE_VISUAL_TUNING[image.display_order] ?? DEFAULT_TILE_VISUAL
 
       return {
         ...image,
         key: `${image.id}-${rowIndex}-${tileIndex}`,
-        objectPosition: TILE_POSITIONS[visualIndex % TILE_POSITIONS.length],
+        objectPosition: tuning.objectPosition,
+        imageScale: tuning.scale,
       }
     }),
   }))
@@ -56,9 +62,9 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
   const [showContent, setShowContent] = useState(false)
   const marqueeRows = buildMarqueeRows(gridImages)
 
-  // 背景滚动约 2.5 秒后，底部内容从下弹出
+  // 开场 0.5 秒后开始上移，并在 2.5 秒时到达最终位置
   useEffect(() => {
-    const t = setTimeout(() => setShowContent(true), 2500)
+    const t = setTimeout(() => setShowContent(true), 500)
     return () => clearTimeout(t)
   }, [])
 
@@ -75,7 +81,7 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
         aria-hidden="true"
         style={{
           position: 'absolute',
-          inset: '-16% -24% 26%',
+          inset: '-16% -24% -10%',
           overflow: 'hidden',
           zIndex: 0,
         }}
@@ -139,7 +145,7 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
                             overflow: 'hidden',
                             borderRadius: 30,
                             border: '1px solid rgba(105, 54, 183, 0.55)',
-                            background: 'rgba(37, 18, 72, 0.84)',
+                            background: 'rgba(27, 13, 54, 0.36)',
                             boxShadow:
                               '0 0 0 1px rgba(80, 33, 146, 0.42), 0 18px 42px rgba(5, 2, 16, 0.44)',
                           }}
@@ -159,9 +165,9 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
                             className="object-cover"
                             style={{
                               objectPosition: tile.objectPosition,
-                              transform: 'scale(1.14)',
+                              transform: `scale(${tile.imageScale})`,
                               opacity: row.imageOpacity,
-                              filter: 'saturate(0.92) contrast(1.04) brightness(0.86)',
+                              filter: 'saturate(0.98) contrast(1.02) brightness(0.98)',
                             }}
                           />
 
@@ -169,12 +175,12 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
                             style={{
                               position: 'absolute',
                               inset: 0,
-                              background: `linear-gradient(180deg, rgba(24, 12, 50, 0.14) 0%, rgba(30, 13, 64, ${Math.min(
+                              background: `linear-gradient(180deg, rgba(24, 12, 50, 0.04) 0%, rgba(30, 13, 64, ${Math.min(
                                 row.overlayOpacity,
-                                0.72
+                                0.42
                               )}) 52%, rgba(18, 8, 36, ${Math.min(
-                                row.overlayOpacity + 0.26,
-                                0.88
+                                row.overlayOpacity + 0.12,
+                                0.52
                               )}) 100%)`,
                             }}
                           />
@@ -183,7 +189,7 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
                               position: 'absolute',
                               inset: 0,
                               background:
-                                'radial-gradient(circle at 50% 12%, rgba(126, 70, 226, 0.18), transparent 48%)',
+                                'radial-gradient(circle at 50% 12%, rgba(126, 70, 226, 0.1), transparent 48%)',
                             }}
                           />
                         </div>
@@ -195,6 +201,7 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
             ))}
           </motion.div>
         </div>
+
       </div>
 
       <div
@@ -202,9 +209,9 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
         style={{
           position: 'absolute',
           inset: 0,
-          zIndex: 1,
+          zIndex: 2,
           background:
-            'linear-gradient(180deg, rgba(10, 6, 22, 0.08) 0%, rgba(23, 10, 47, 0.12) 28%, rgba(88, 35, 170, 0.18) 54%, rgba(10, 6, 22, 0.14) 100%)',
+            'linear-gradient(180deg, rgba(10, 6, 22, 0.03) 0%, rgba(23, 10, 47, 0.06) 28%, rgba(88, 35, 170, 0.1) 54%, rgba(10, 6, 22, 0.08) 100%)',
           pointerEvents: 'none',
         }}
       />
@@ -216,22 +223,10 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
           bottom: 0,
           left: 0,
           right: 0,
-          height: 530,
-          zIndex: 2,
-          background:
-            'linear-gradient(180deg, rgba(7, 4, 16, 0) 0%, rgba(9, 5, 20, 0.34) 22%, rgba(8, 5, 17, 0.82) 68%, #080611 100%)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
+          height: 620,
           zIndex: 3,
           background:
-            'radial-gradient(circle at 50% 54%, rgba(124, 64, 222, 0.28) 0%, rgba(124, 64, 222, 0.16) 16%, transparent 38%)',
+            'linear-gradient(180deg, rgba(7, 4, 16, 0) 0%, rgba(9, 5, 20, 0.08) 18%, rgba(14, 8, 28, 0.36) 46%, rgba(10, 6, 21, 0.74) 74%, #080611 100%)',
           pointerEvents: 'none',
         }}
       />
@@ -243,7 +238,7 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
           bottom: 0,
           left: 0,
           right: 0,
-          zIndex: 4,
+          zIndex: 5,
           padding: '0 24px 48px',
           display: 'flex',
           flexDirection: 'column',
@@ -252,7 +247,7 @@ export default function SplashScreen({ onExplore, gridImages }: SplashScreenProp
         initial={{ y: 320 }}
         animate={{ y: showContent ? 0 : 320 }}
         transition={{
-          duration: 0.7,
+          duration: 2,
           ease: [0.32, 0.72, 0, 1],
         }}
       >

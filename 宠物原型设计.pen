@@ -1755,7 +1755,8 @@
                   "content": "性格温柔、亲人且极具陪伴感，像一团会呼噜的云。适合偏好安静互动、愿意投入梳毛与陪伴时间的家庭。",
                   "lineHeight": 1.5,
                   "fontFamily": "Outfit",
-                  "fontSize": 15
+                  "fontSize": 15,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -2501,7 +2502,8 @@
                   "content": "按阶段掌握陪伴重点，滑动查看不同专题。",
                   "lineHeight": 1.4,
                   "fontFamily": "$font/display",
-                  "fontSize": 14
+                  "fontSize": 14,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -2794,7 +2796,8 @@
                           "content": "从免疫、驱虫到体重观察，建立每天都能执行的健康节奏。",
                           "lineHeight": 1.4,
                           "fontFamily": "$font/display",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         },
                         {
                           "type": "frame",
@@ -2939,7 +2942,8 @@
                   "content": "建立驱虫提醒、记录最近一次疫苗时间，并观察今天的饮水与排便。",
                   "lineHeight": 1.4,
                   "fontFamily": "Outfit",
-                  "fontSize": 14
+                  "fontSize": 14,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -3191,7 +3195,8 @@
                   "content": "把基础照护拆成四个清晰模块，并快速识别需要升级处理的信号。",
                   "lineHeight": 1.4,
                   "fontFamily": "Outfit",
-                  "fontSize": 14
+                  "fontSize": 14,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -3336,7 +3341,8 @@
                           "content": "核对疫苗批次与加强针时间。",
                           "lineHeight": 1.4,
                           "fontFamily": "Outfit",
-                          "fontSize": 13
+                          "fontSize": 13,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -3412,7 +3418,8 @@
                           "content": "体内外驱虫间隔建议每月复查。",
                           "lineHeight": 1.4,
                           "fontFamily": "Outfit",
-                          "fontSize": 13
+                          "fontSize": 13,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -3497,7 +3504,8 @@
                           "content": "观察饮水量、体重与主粮适口性。",
                           "lineHeight": 1.4,
                           "fontFamily": "Outfit",
-                          "fontSize": 13
+                          "fontSize": 13,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -3573,7 +3581,8 @@
                           "content": "结合年龄、体况与恢复周期做准备。",
                           "lineHeight": 1.4,
                           "fontFamily": "Outfit",
-                          "fontSize": 13
+                          "fontSize": 13,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -4571,7 +4580,8 @@
                   "content": "用温和正向强化，建立稳定、安心的日常习惯。",
                   "lineHeight": 1.4,
                   "fontFamily": "Outfit",
-                  "fontSize": 14
+                  "fontSize": 14,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -4671,7 +4681,8 @@
                   "content": "当毛孩子出现吠叫、乱咬或抗拒时，先确认环境压力，再用奖励把目标行为一点点放大。",
                   "lineHeight": 1.5,
                   "fontFamily": "Outfit",
-                  "fontSize": 13
+                  "fontSize": 13,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -4696,7 +4707,8 @@
                   "content": "出现吠叫、乱咬或抗拒时，先确认环境压力，再把目标行为拆小并及时奖励。",
                   "lineHeight": 1.5,
                   "fontFamily": "Outfit",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -4807,7 +4819,8 @@
                       "content": "饭后带去固定地点，成功后立刻夸奖。",
                       "lineHeight": 1.4,
                       "fontFamily": "Outfit",
-                      "fontSize": 12
+                      "fontSize": 12,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -4866,7 +4879,8 @@
                       "content": "从不吃地面食物开始，再逐步增加干扰。",
                       "lineHeight": 1.4,
                       "fontFamily": "Outfit",
-                      "fontSize": 12
+                      "fontSize": 12,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -4925,7 +4939,8 @@
                       "content": "先练名字反应，再练距离与干扰下回到你身边。",
                       "lineHeight": 1.4,
                       "fontFamily": "Outfit",
-                      "fontSize": 12
+                      "fontSize": 12,
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -5434,7 +5449,8 @@
                   "content": "当宠物步入生命后段，照护重点会从活力管理转向舒适、疼痛控制与陪伴质量。页面以更暖的米杏和茶棕色调呈现，让信息既克制又有安抚感。",
                   "lineHeight": 1.5,
                   "fontFamily": "Inter",
-                  "fontSize": 14
+                  "fontSize": 14,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -5518,7 +5534,8 @@
                       "content": "慢性病管理、疼痛评估、食欲与饮水追踪，帮助主人及时发现衰弱信号。",
                       "lineHeight": 1.45,
                       "fontFamily": "Inter",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "frame",
@@ -5649,7 +5666,8 @@
                       "content": "围绕抉择准备、殡葬流程与纪念方式，帮助主人在困难阶段获得更完整的信息支持。",
                       "lineHeight": 1.45,
                       "fontFamily": "Inter",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "frame",
@@ -6076,7 +6094,8 @@
               "content": "从证件办理到文明遛宠，再到托运与宠物友好目的地，让第一次带它出门也能安心。",
               "lineHeight": 1.5,
               "fontFamily": "Inter",
-              "fontSize": 14
+              "fontSize": 14,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -6737,7 +6756,8 @@
                   "content": "陪伴 418 天 · 今日步数 5,620 · 心情稳定",
                   "lineHeight": 1.4,
                   "fontFamily": "Outfit",
-                  "fontSize": 13
+                  "fontSize": 13,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -6786,7 +6806,8 @@
                   "content": "疫苗、芯片、过敏史、常用医院一处收纳。",
                   "lineHeight": 1.4,
                   "fontFamily": "Outfit",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -6887,7 +6908,8 @@
                       "content": "本月 ￥1,268 · 食物 46% · 医疗 24%",
                       "lineHeight": 1.4,
                       "fontFamily": "Outfit",
-                      "fontSize": 12
+                      "fontSize": 12,
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -6958,7 +6980,8 @@
                   "content": "过去 6 周体重维持在 5.6kg - 5.9kg，食欲和睡眠记录平稳。",
                   "lineHeight": 1.4,
                   "fontFamily": "Outfit",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "frame",
@@ -7129,7 +7152,8 @@
                   "content": "明早 08:30 驱虫提醒 · 周六 19:00 洗护预约",
                   "lineHeight": 1.4,
                   "fontFamily": "Outfit",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -7178,7 +7202,8 @@
                   "content": "已收藏 18 篇行为训练、9 条出行清单与 6 份食谱。",
                   "lineHeight": 1.4,
                   "fontFamily": "Outfit",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -7227,7 +7252,8 @@
                   "content": "账号安全、通知偏好、意见反馈与客服入口。",
                   "lineHeight": 1.4,
                   "fontFamily": "Outfit",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -7417,6 +7443,17 @@
           ]
         }
       ]
+    },
+    {
+      "type": "text",
+      "id": "XAAQb",
+      "x": 0,
+      "y": 0,
+      "fill": "#000000",
+      "content": "186022",
+      "fontFamily": "Inter",
+      "fontSize": 12,
+      "fontWeight": "normal"
     }
   ],
   "variables": {

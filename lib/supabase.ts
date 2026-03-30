@@ -138,76 +138,74 @@ export async function fetchSplashGridImages(): Promise<SplashGridImageItem[]> {
   }
 }
 
+const START_PAGE_BUCKET_PUBLIC_URL =
+  'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/start%20page'
+
+function getStartPageImageUrl(filename: string): string {
+  return `${START_PAGE_BUCKET_PUBLIC_URL}/${filename}`
+}
+
 const FALLBACK_SPLASH_GRID_IMAGES: SplashGridImageItem[] = [
-  {
-    id: 'splash-cat-1',
-    title: '猫类',
-    image_url:
-      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/cat.png',
-    display_order: 1,
-    created_at: '',
-  },
-  {
-    id: 'splash-dog-1',
-    title: '犬类',
-    image_url:
-      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/dog.png',
-    display_order: 2,
-    created_at: '',
-  },
   {
     id: 'splash-bird-1',
     title: '鸟类',
-    image_url:
-      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/bird.png',
-    display_order: 3,
-    created_at: '',
-  },
-  {
-    id: 'splash-fish-1',
-    title: '水族与两栖类',
-    image_url:
-      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/fish.png',
-    display_order: 4,
+    image_url: getStartPageImageUrl('A_beautiful_colorful_202603191746.jpeg'),
+    display_order: 1,
     created_at: '',
   },
   {
     id: 'splash-reptile-1',
     title: '爬行与冷血类',
-    image_url:
-      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/reptile.png',
-    display_order: 5,
+    image_url: getStartPageImageUrl('A_bright_green_202603191747.jpeg'),
+    display_order: 2,
     created_at: '',
   },
   {
-    id: 'splash-cat-2',
+    id: 'splash-cat-1',
     title: '猫类',
-    image_url:
-      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/cat.png',
-    display_order: 6,
+    image_url: getStartPageImageUrl('A_fluffy_ginger_202603191746.jpeg'),
+    display_order: 3,
+    created_at: '',
+  },
+  {
+    id: 'splash-aquatic-1',
+    title: '水族与两栖类',
+    image_url: getStartPageImageUrl('A_school_of_202603191747.jpeg'),
+    display_order: 4,
+    created_at: '',
+  },
+  {
+    id: 'splash-dog-1',
+    title: '犬类',
+    image_url: getStartPageImageUrl('Border_Collie_resting_202603191746.jpeg'),
+    display_order: 5,
     created_at: '',
   },
   {
     id: 'splash-dog-2',
     title: '犬类',
-    image_url:
-      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/dog.png',
+    image_url: getStartPageImageUrl('Golden_Retriever_holding_202603191746.jpeg'),
+    display_order: 6,
+    created_at: '',
+  },
+  {
+    id: 'splash-cat-2',
+    title: '猫类',
+    image_url: getStartPageImageUrl('Kitten_pawing_feathered_202603191746.jpeg'),
     display_order: 7,
     created_at: '',
   },
   {
     id: 'splash-bird-2',
     title: '鸟类',
-    image_url:
-      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/bird.png',
+    image_url: getStartPageImageUrl('Lovebird_eating_seed_202603191747.jpeg'),
     display_order: 8,
     created_at: '',
   },
   {
-    id: 'splash-fish-2',
+    id: 'splash-aquatic-2',
     title: '水族与两栖类',
-    image_url:
-      'https://rcdbihgkbfqjipuyfibu.supabase.co/storage/v1/object/public/pet-images/fish.png',
+    image_url: getStartPageImageUrl('Toad_hiding_under_202603191747.jpeg'),
     display_order: 9,
     created_at: '',
   },
